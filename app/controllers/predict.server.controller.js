@@ -57,7 +57,7 @@ exports.trainAndPredict = function (req, res) {
     //console.log(trainingData.dataSync())
     //
     //tensor of output for training data
-    //the values for species will be:
+    //the values for disease will be:
     // Die_Live 1:       1,0
     // Die_Live 2:       0,1
     const outputData = tf.tensor2d(heart.map(item => [
