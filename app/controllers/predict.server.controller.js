@@ -2,7 +2,6 @@ exports.readData = function (req, res) {
 
 };
 
-//
 exports.trainAndPredict = function (req, res) {
     const tf = require('@tensorflow/tfjs');
     require('@tensorflow/tfjs-node');
@@ -137,19 +136,15 @@ exports.trainAndPredict = function (req, res) {
             }
 
         ) 
-        //prediction
+        //prediction       
         const results = model.predict(userData);
-       // const results = model.predict(testingData);
-        results.print()
+        results.print();
         // get the values from the tf.Tensor
         //var tensorData = results.dataSync();
         results.array().then(array => {
             console.log(array[0][0])
             var resultForData1 = array[0];
-            var resultForTest2 = array[1];
-            var resultForTest3 = array[2];
             var dataToSend = {row1: resultForData1
-                ,row2: resultForTest2, row3: resultForTest3
             }
             console.log(resultForData1);
             res.status(200).send(dataToSend);
